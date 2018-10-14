@@ -16,6 +16,8 @@ target/*
 .classpath
 .project
 gap-vacations-test.iml
+allure-report
+allure-results
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
