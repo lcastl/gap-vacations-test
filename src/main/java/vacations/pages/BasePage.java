@@ -1,33 +1,27 @@
 package vacations.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import vacations.utils.TestInfo;
 
-public class BasePage extends PageFactory {
-
+public class BasePage {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-
-    public BasePage(WebDriver pDriver) {
-        System.setProperty(TestInfo.driverBrowser, TestInfo.driverPath);
-        if (driver == null) {
-            pDriver = new ChromeDriver();
-            wait = new WebDriverWait(pDriver, 15);
-            this.driver = pDriver;
-        }
-        PageFactory.initElements(pDriver, this);
+    public BasePage(WebDriver driver) {
+        wait = new WebDriverWait(driver, 15);
+        this.driver = driver;
     }
 
     public void openTheLoginPage(String environment) {
         getDriver().get(environment);
         getDriver().manage().window().maximize();
+        PageFactory.initElements(driver, this);
     }
 
     public WebDriverWait getWait() {
@@ -38,17 +32,21 @@ public class BasePage extends PageFactory {
         return driver;
     }
 
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
+    }
+
     public void dispose() {
-        if (driver != null) {
-            driver.quit();
+        if (getDriver() != null) {
+            getDriver().quit();
         }
     }
 
-    public boolean validateVisibilityOfWebElement(WebElement element){
+    public boolean validateVisibilityOfWebElement(WebElement element) {
         try {
             element.isDisplayed();
             return true;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }
@@ -62,4 +60,18 @@ public class BasePage extends PageFactory {
         }
     }
 
+    public void scrollToElement(WebElement element) {
+        JavascriptExecutor jse = (JavascriptExecutor)getDriver();
+        jse.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public void selectFromDropDownByValue(WebElement cmbElement, String value) {
+        Select select = new Select(cmbElement);
+        select.selectByValue(value);
+    }
+
+    public void selectFromDropDownByIndex(WebElement cmbElement, int value) {
+        Select select = new Select(cmbElement);
+        select.selectByIndex(value);
+    }
 }

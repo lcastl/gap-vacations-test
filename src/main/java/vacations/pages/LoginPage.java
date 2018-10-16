@@ -15,17 +15,8 @@ public class LoginPage extends BasePage {
     @FindBy(className = "submit")
     private WebElement btnSignIn;
 
-    @FindBy(css = "#header #logo")
-    private WebElement siteLogo;
-
-    @FindBy(css = "#user_information")
-    private WebElement loggedUserInformation;
-
-    @FindBy(css = "#content .flash_notice")
-    private WebElement signedInSuccessfullyBanner;
-
-    public LoginPage(WebDriver pDriver) {
-        super(pDriver);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
     public void performLogin(String userName, String password) {
@@ -33,20 +24,5 @@ public class LoginPage extends BasePage {
         txtEmail.sendKeys(userName);
         txtPassword.sendKeys(password);
         btnSignIn.click();
-    }
-
-    public boolean verifyUserIsAtHomePage() {
-        waitUntilElementAppears(loggedUserInformation);
-        return validateVisibilityOfWebElement(loggedUserInformation);
-    }
-
-    public boolean verifyTheSiteLogoIsDisplayed() {
-        waitUntilElementAppears(siteLogo);
-        return validateVisibilityOfWebElement(siteLogo);
-    }
-
-    public boolean verifySignedInSuccessfullyBanner() {
-        waitUntilElementAppears(signedInSuccessfullyBanner);
-        return validateVisibilityOfWebElement(signedInSuccessfullyBanner);
     }
 }
