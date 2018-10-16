@@ -42,6 +42,9 @@ public class CreateUsersPage extends BasePage {
     @FindBy(id = "notice")
     private WebElement lblSuccessfulMessage;
 
+    @FindBy(css = ".selected a")
+    private WebElement ctaEmployeesList;
+
     public CreateUsersPage(WebDriver driver) {
         super(driver);
     }
@@ -83,6 +86,7 @@ public class CreateUsersPage extends BasePage {
     public boolean verifyEmployeeCreation(String successfulMessage) {
         waitUntilElementAppears(lblSuccessfulMessage);
         if (lblSuccessfulMessage.getText().trim().equals(successfulMessage.trim())) {
+            ctaEmployeesList.click();
             return true;
         } else {
             return false;
