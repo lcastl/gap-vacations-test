@@ -5,7 +5,7 @@ Feature: Login into the GAP vacations management
   As a user I want to be able to log in on the application,
   so that I can navigate for the different features
 
-  @smoke
+  @smoke1
   Scenario Outline: Login into the GAP vacations management
     Given I am at the GAP vacations management site
 

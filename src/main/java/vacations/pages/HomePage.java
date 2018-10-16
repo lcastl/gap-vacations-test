@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
 
     @FindBy(css = "#header #logo")
     private WebElement siteLogo;
@@ -15,8 +15,11 @@ public class HomePage extends BasePage{
     @FindBy(css = "#content .flash_notice")
     private WebElement signedInSuccessfullyBanner;
 
-    public HomePage(WebDriver pDriver) {
-        super(pDriver);
+    @FindBy(css = "#content p a")
+    private WebElement ctaCreateEmployee;
+
+    public HomePage(WebDriver driver) {
+        super(driver);
     }
 
     public boolean verifyUserIsAtHomePage() {
@@ -32,5 +35,11 @@ public class HomePage extends BasePage{
     public boolean verifySignedInSuccessfullyBanner() {
         waitUntilElementAppears(signedInSuccessfullyBanner);
         return validateVisibilityOfWebElement(signedInSuccessfullyBanner);
+    }
+
+    public void clickOnCreateANewEmployee() {
+        waitUntilElementAppears(ctaCreateEmployee);
+        scrollToElement(ctaCreateEmployee);
+        ctaCreateEmployee.click();
     }
 }
