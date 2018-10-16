@@ -2,7 +2,7 @@
 
 Best Practices
 ----
-Find below the way to name locator, classes and methods in the framework:
+Find below the way to name locators, classes and methods in the framework:
 
 |-------------------------------------Locators---------------------------------------------|
 * #### Locators: Prefix (type of object(CamelLowerCase) + name identifier(CamelUpperCase))
@@ -19,3 +19,4 @@ hdr=header, icn=icon, ctn=container
 
 | Example | HomePage, LoginPage, CreateUsersSteps|
 | ------ | ------ |
+

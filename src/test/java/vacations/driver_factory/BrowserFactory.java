@@ -36,7 +36,7 @@ public class BrowserFactory {
             case "Chrome":
                 driver = drivers.get("Chrome");
                 if (driver == null) {
-                    System.setProperty("webdriver.chrome.driver", TestInfo.driverPath);
+                    System.setProperty("webdriver.chrome.driver", TestInfo.ChromedriverPath);
                     driver = new ChromeDriver();
                     drivers.put("Chrome", driver);
                 }
