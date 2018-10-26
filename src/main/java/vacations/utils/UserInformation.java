@@ -56,4 +56,10 @@ public class UserInformation {
     public void setDateIn(String dateIn) {
         this.dateIn = dateIn;
     }
+
+    @Override
+    public String toString()
+    {
+        return "UserInformation [dateIn = "+dateIn+", lastName = "+lastName+", email = "+email+", identification = "+identification+", firstName = "+firstName+", leaderName = "+leaderName+"]";
+    }
 }

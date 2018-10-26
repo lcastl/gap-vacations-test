@@ -1,10 +1,10 @@
 package vacations.pages;
 
-import cucumber.api.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import vacations.utils.UserInformation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +35,20 @@ public class UsersListPage extends BasePage {
         }
     }
 
-    public boolean verifyUserInformationMatches(DataTable userInfo) {
-        List<List<String>> userData = userInfo.raw();
+    public boolean verifyUserInformationMatches(UserInformation userInfo) {
         boolean validation = true;
+        ArrayList<String> userData = new ArrayList<>();
+        userData.add(userInfo.getFirstName());
+        userData.add(userInfo.getLastName());
+        userData.add(userInfo.getIdentification());
+        userData.add(userInfo.getLeaderName());
+
+        String[] date = userInfo.getDateIn().split("-");
+        String dateStr = date[1] + "/" + date[0] + "/" + date[2];
+        userData.add(dateStr);
+
         for (int i = 0; i < userDataFound.size(); i++) {
-            if (!userDataFound.get(i).equals(userData.get(1).get(i))) {
+            if (!userDataFound.get(i).equals(userData.get(i))) {
                 validation = false;
             }
         }

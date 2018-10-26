@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="vacations" verbose="1" >
+    <test name="create user">
+        <classes>
+            <class name="vacations.testcases.VacationsTests">
+                <parameter name = "userName" value = "gap-automation-test@mailinator.com"/>
+                <parameter name = "password" value = "12345678"/>
+                <parameter name = "successfulMessage" value = "Employee was successfully created."/>
+                <parameter name = "leaderName" value = "Adrian Castellanos"/>
+            <methods>
+                <include name="openGapVacationSite" />
+                <include name="loginWitValidCredentials" />
+                <include name="verifyThatTheUserNavigatedToTheHomePage" />
+                <include name="verifyThatTheSiteLogoIsDisplayed" />
+                <include name="verifyThatTheSignedInSuccessfullyBannerIsDisplayed" />
+                <include name="givenIamAtTheHomePage" />
+                <include name="clickOnCreateANewEmployeeLink" />
+                <include name="verifyThatTheNewEmployeePageIsDisplayed" />
+                <include name="enterTheEmployeeInformation" />
+                <include name="clickOnCreateEmployeeButton" />
+                <include name="verifyThatTheMessageIsDisplayed" />
+                <include name="searchForAGivenUserInTheList" />
+                <include name="verifyThatTheFoundUserInformationIsTheSameThanTheGivenUser" />
+            </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+
+
+

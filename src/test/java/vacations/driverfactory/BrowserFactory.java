@@ -1,4 +1,4 @@
-package vacations.driver_factory;
+package vacations.driverfactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class BrowserFactory {
 
-    private static Map<String, WebDriver> drivers = new HashMap<String, WebDriver>();
+    private static Map<String, WebDriver> drivers = new HashMap<>();
 
     public static WebDriver getBrowser(String browserName) {
         WebDriver driver = null;

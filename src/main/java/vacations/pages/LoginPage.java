@@ -25,4 +25,8 @@ public class LoginPage extends BasePage {
         txtPassword.sendKeys(password);
         btnSignIn.click();
     }
+
+    public boolean verifyLoginPageIsVisible() {
+        return validateVisibilityOfWebElement(txtEmail);
+    }
 }
