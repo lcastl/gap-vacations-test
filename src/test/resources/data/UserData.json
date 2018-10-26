@@ -1,0 +1,12 @@
+{
+  "userInfo" : [
+    {
+      "firstName"      : "James",
+      "lastName"       : "Smith",
+      "email"          : "employee@mailinator.com",
+      "identification" : "1234567890",
+      "leaderName"     : "Adrian Castellanos",
+      "dateIn"         : "21-01-2014"
+    }
+  ]
+}

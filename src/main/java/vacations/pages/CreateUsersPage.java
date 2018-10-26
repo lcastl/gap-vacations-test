@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import vacations.utils.UserInformation;
 
-import java.util.List;
-
 public class CreateUsersPage extends BasePage {
 
     @FindBy(css = "#site_content h1")
@@ -54,28 +52,27 @@ public class CreateUsersPage extends BasePage {
         return validateVisibilityOfWebElement(lblNewEmployee);
     }
 
-    public void enterUserInformation(List<UserInformation> userInfo) {
+    public void enterUserInformation(UserInformation userInfo) {
         String[] date;
         String year;
         String day;
         int month;
 
-        for (UserInformation user : userInfo) {
-            txtFirstName.sendKeys(user.getFirstName());
-            txtLastName.sendKeys(user.getLastName());
-            txtEmail.sendKeys(user.getEmail());
-            txtIdentification.sendKeys(user.getIdentification());
-            txtLeaderName.sendKeys(user.getLeaderName());
+        txtFirstName.sendKeys(userInfo.getFirstName());
+        txtLastName.sendKeys(userInfo.getLastName());
+        txtEmail.sendKeys(userInfo.getEmail());
+        txtIdentification.sendKeys(userInfo.getIdentification());
+        txtLeaderName.sendKeys(userInfo.getLeaderName());
 
-            date = user.getDateIn().split("-");
-            day = date[0];
-            month = Integer.parseInt(date[1]) - 1;
-            year = date[2];
+        date = userInfo.getDateIn().split("-");
+        day = date[0];
+        month = Integer.parseInt(date[1]) - 1;
+        year = date[2];
 
-            selectFromDropDownByValue(drdStartWorkingYear, year);
-            selectFromDropDownByIndex(drdStartWorkingMonth, month);
-            selectFromDropDownByValue(drdStartWorkingDay, day);
-        }
+        selectFromDropDownByValue(drdStartWorkingYear, year);
+        selectFromDropDownByIndex(drdStartWorkingMonth, month);
+        selectFromDropDownByValue(drdStartWorkingDay, day);
+
     }
 
     public void clickOnCrateEmployeeButton() {
